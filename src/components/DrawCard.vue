@@ -1,43 +1,61 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <button v-on:click="loadData">Greet</button>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+
 export default {
   name: "DrawCard",
   data: function() {
     return {
-      deckId: "",
+      cards: [],
+      deck: this.deckId,
+      comt: this.target + "Cards",
     };
   },
   methods: {
-    loadData() {
-      this.deckId = this.$store.state.deckId;
+    loadData: function() {
       axios
         .get(
           "https://deckofcardsapi.com/api/deck/" +
             this.deckId +
-            "/draw/?count=2"
+            "/draw/?count=" +
+            this.count
         )
         .then((response) => {
-          console.log(response.data.cards);
+          this.cards = response.data.cards;
+          let i;
+          for (i = 0; i < this.cards.length; i++) {
+            this.$store.commit(this.comt, { item: this.cards[i] });
+          }
         })
         .catch((e) => {
-          this.errors.push(e);
+          console.log(e);
+          //this.errors.push(e);
         });
     },
   },
-  mounted() {
-    this.loadData();
+  props: {
+    deckId: {
+      type: String,
+      default: "wmd9bw7ldlcy",
+    },
+    count: {
+      type: Number,
+      default: 2,
+    },
+    target: {
+      type: String,
+    },
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="sass">
-body
-  background-color: #333
+.hello
+  border: 1px solid red
 </style>
