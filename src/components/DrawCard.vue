@@ -1,7 +1,5 @@
 <template>
-  <div class="hello">
-    <button v-on:click="loadData">Greet</button>
-  </div>
+  <button v-on:click="loadData">{{ this.text }}</button>
 </template>
 
 <script>
@@ -13,7 +11,7 @@ export default {
     return {
       cards: [],
       deck: this.deckId,
-      comt: this.target + "Cards",
+      comt: this.target + "Cards"
     };
   },
   methods: {
@@ -25,7 +23,7 @@ export default {
             "/draw/?count=" +
             this.count
         )
-        .then((response) => {
+        .then(response => {
           this.cards = response.data.cards;
           let i;
           for (i = 0; i < this.cards.length; i++) {
@@ -40,29 +38,33 @@ export default {
             }
             this.$store.commit(this.comt, {
               item: this.cards[i],
-              sum: this.cards[i].points,
+              sum: this.cards[i].points
             });
+            console.log(this.$store.state.croupierSum);
           }
         })
-        .catch((e) => {
+        .catch(e => {
           console.log(e);
           //this.errors.push(e);
         });
-    },
+    }
   },
   props: {
     deckId: {
       type: String,
-      default: "wmd9bw7ldlcy",
+      default: "wmd9bw7ldlcy"
     },
     count: {
       type: Number,
-      default: 2,
+      default: 2
     },
     target: {
-      type: String,
+      type: String
     },
-  },
+    text: {
+      type: String
+    }
+  }
 };
 </script>
 

@@ -19,11 +19,11 @@ export default {
   components: {
     Player,
     Bet,
-    Croupier,
+    Croupier
   },
   data: function() {
     return {};
-  },
+  }
 };
 </script>
 <style lang="sass">

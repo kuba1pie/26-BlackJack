@@ -2,27 +2,26 @@
   <div class="Croupier Item">
     <h1>Croupier Cards</h1>
 
-    <DrawCard v-bind:deckId="this.$store.state.deckId" v-bind:target="target" />
-    <div class="Row">
+    <div class="Row Cards">
       <Card v-for="card in cards" v-bind:card="card" :key="card.code" />
     </div>
-    <div class="Row">Points: {{ this.suma }}</div>
+    <div class="Row">Points: {{ this.$store.state.croupierSum }}</div>
   </div>
 </template>
 
 <script>
-import DrawCard from "@/components/DrawCard.vue";
 import Card from "@/components/Card.vue";
-
+import { drawCard } from "@/components/helpers.js";
 export default {
   name: "Croupier",
   data: function() {
     return {
-      target: "croupier",
-      cards: this.$store.state.croupierCards,
-      suma: this.$store.state.croupierSum
+      cards: this.$store.state.croupierCards
     };
   },
-  components: { DrawCard, Card }
+  mounted() {
+    drawCard(this.$store.state.deckId, 1, "croupier");
+  },
+  components: { Card }
 };
 </script>
