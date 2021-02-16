@@ -19,11 +19,11 @@ export default {
   components: {
     Player,
     Bet,
-    Croupier
+    Croupier,
   },
   data: function() {
     return {};
-  }
+  },
 };
 </script>
 <style lang="sass">
@@ -45,4 +45,9 @@ export default {
       button
         margin: 0.5em 1em
         padding: 0.3em 0.8em
+      .Card
+        display: flex
+        flex-flow: row
+        img
+          max-width: 100px
 </style>

@@ -1,14 +1,12 @@
 <template>
-  <div class="card">
+  <div class="Card">
     <img :src="this.card.image" />
-    <p>{{ this.card.value }}</p>
-    <p></p>
   </div>
 </template>
 
 <script>
 export default {
-  name: "card",
+  name: "Card",
   data: function() {
     return {};
   },

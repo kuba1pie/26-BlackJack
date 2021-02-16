@@ -29,7 +29,19 @@ export default {
           this.cards = response.data.cards;
           let i;
           for (i = 0; i < this.cards.length; i++) {
-            this.$store.commit(this.comt, { item: this.cards[i] });
+            const value = this.cards[i].value;
+            if (value == "KING" || value == "QUEEN" || value == "JACK") {
+              this.cards[i].points = 10;
+            } else if (value == "ACE") {
+              alert("AS!");
+              this.cards[i].points = 10;
+            } else {
+              this.cards[i].points = parseInt(value);
+            }
+            this.$store.commit(this.comt, {
+              item: this.cards[i],
+              sum: this.cards[i].points,
+            });
           }
         })
         .catch((e) => {
