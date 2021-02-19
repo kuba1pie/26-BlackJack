@@ -6,7 +6,7 @@ export function drawCard(deckId, count, target) {
     .get(
       "https://deckofcardsapi.com/api/deck/" + deckId + "/draw/?count=" + count
     )
-    .then(response => {
+    .then((response) => {
       let cards = response.data.cards;
       let i;
       for (i = 0; i < cards.length; i++) {
@@ -21,11 +21,17 @@ export function drawCard(deckId, count, target) {
         }
         store.commit(target + "Cards", {
           item: cards[i],
-          sum: cards[i].points
+          sum: cards[i].points,
         });
       }
     })
-    .catch(e => {
+    .catch((e) => {
       console.log(e);
     });
+}
+export function check(player, dealer) {
+  console.log(player + " " + dealer);
+  if ((player == 21) & (dealer !== 21)) {
+    console.log("loose");
+  }
 }

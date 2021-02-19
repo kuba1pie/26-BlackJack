@@ -5,13 +5,14 @@
       <Player />
       <Croupier />
     </div>
-    <div class="Row"><Bet /></div>
+    <div class="Row"><Engine /><Bet /></div>
   </div>
 </template>
 
 <script>
 import Player from "@/components/Player.vue";
 import Croupier from "@/components/Croupier.vue";
+import Engine from "@/components/Engine.vue";
 import Bet from "@/components/Bet.vue";
 
 export default {
@@ -19,7 +20,8 @@ export default {
   components: {
     Player,
     Bet,
-    Croupier
+    Croupier,
+    Engine
   },
   data: function() {
     return {};

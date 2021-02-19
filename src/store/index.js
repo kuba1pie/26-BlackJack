@@ -22,6 +22,12 @@ export default new Vuex.Store({
     croupierCards(state, payload) {
       state.croupierCards.push(payload.item);
       state.croupierSum += payload.sum;
+    },
+    reset(state) {
+      state.croupierCards = [];
+      state.playerCards = [];
+      state.croupierSum = 0;
+      state.playerSum = 0;
     }
   },
   actions: {},

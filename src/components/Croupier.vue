@@ -11,16 +11,12 @@
 
 <script>
 import Card from "@/components/Card.vue";
-import { drawCard } from "@/components/helpers.js";
 export default {
   name: "Croupier",
   data: function() {
     return {
       cards: this.$store.state.croupierCards
     };
-  },
-  mounted() {
-    drawCard(this.$store.state.deckId, 1, "croupier");
   },
   components: { Card }
 };

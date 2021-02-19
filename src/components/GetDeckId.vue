@@ -20,6 +20,7 @@ export default {
   },
   mounted() {
     this.loadData();
+    this.$store.commit("reset");
   }
 };
 </script>

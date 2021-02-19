@@ -40,7 +40,6 @@ export default {
               item: this.cards[i],
               sum: this.cards[i].points
             });
-            console.log(this.$store.state.croupierSum);
           }
         })
         .catch(e => {
