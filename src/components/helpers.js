@@ -23,6 +23,7 @@ export function drawCard(deckId, count, target) {
           item: cards[i],
           sum: cards[i].points,
         });
+        console.log(store.state.croupierSum);
       }
     })
     .catch((e) => {
@@ -32,6 +33,6 @@ export function drawCard(deckId, count, target) {
 export function check(player, dealer) {
   console.log(player + " " + dealer);
   if ((player == 21) & (dealer !== 21)) {
-    console.log("loose");
+    //console.log("loose");
   }
 }

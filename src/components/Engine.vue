@@ -27,9 +27,29 @@ export default {
       setTimeout(this.ccc(), 3000);
     },
     stand() {
+      //
       console.log("Stand");
       drawCard(this.$store.state.deckId, 1, "croupier");
-      check(this.$store.state.playerSum, this.$store.state.croupierSum);
+      //let croupierSum = this.$store.state.croupierSum;
+      //check(this.$store.state.playerSum, this.$store.state.croupierSum);
+      console.log("dealer to >17 and check");
+      console.log(this.$store.state.croupierSum);
+      if (this.$store.state.croupierSum < 17) {
+        drawCard(this.$store.state.deckId, 1, "croupier");
+        setTimeout(console.log(this.$store.state.croupierSum), 30000);
+      }
+      // do {
+      // drawCard(this.$store.state.deckId, 1, "croupier");
+      //setTimeout(console.log(this.$store.state.croupierSum), 3000);
+      //} while (this.$store.state.croupierSum < 17);
+      //drawCard(this.$store.state.deckId, 1, "croupier");
+      //croupierSum = croupierSum + 1;
+      //console.log(croupierSum);
+      //console.log("delaer sum: " + this.$store.state.croupierSum);
+      //console.log(croupierSum);
+      //console.log("delaer sum: " + this.$store.state.croupierSum);
+      //console.log("delaer stop");
+      //console.log("delaer check");
     },
   },
   mounted() {
