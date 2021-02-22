@@ -9,6 +9,7 @@ export function drawCard(deckId, count, target) {
     .then((response) => {
       let cards = response.data.cards;
       let i;
+      let suma;
       for (i = 0; i < cards.length; i++) {
         const value = cards[i].value;
         if (value == "KING" || value == "QUEEN" || value == "JACK") {
@@ -23,8 +24,12 @@ export function drawCard(deckId, count, target) {
           item: cards[i],
           sum: cards[i].points,
         });
-        console.log(store.state.croupierSum);
+        suma = store.state.croupierSum;
+        console.log("helper croupier sum: " + suma);
+        //console.log("helper croupier sum: " + store.state.croupierSum);
+        return suma;
       }
+      return suma;
     })
     .catch((e) => {
       console.log(e);
