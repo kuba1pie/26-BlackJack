@@ -14,11 +14,11 @@ export default {
   name: "Engine",
   data: function() {
     return {
-      cards: store.state.playerCards,
+      cards: store.state.playerCards
     };
   },
   computed: {
-    ...mapState(["playerCards", "deckId"]),
+    ...mapState(["playerCards", "deckId"])
   },
   methods: {
     ...mapActions(["getCards"]),
@@ -31,7 +31,7 @@ export default {
     },
     stand() {
       this.getCards({ user: "dealer", deckId: this.deckId, count: 1 });
-    },
-  },
+    }
+  }
 };
 </script>

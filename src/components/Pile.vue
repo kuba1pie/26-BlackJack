@@ -24,15 +24,15 @@ export default {
             "/add/?cards=" +
             cards
         )
-        .then((response) => {
+        .then(response => {
           response;
         })
-        .catch((e) => {
+        .catch(e => {
           this.errors.push(e);
         });
-    },
+    }
   },
-  props: ["deckId", "cards"],
+  props: ["deckId", "cards"]
 };
 </script>
 

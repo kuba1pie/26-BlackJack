@@ -1,5 +1,5 @@
 <template>
-  <div class="dealer Item">
+  <div class="Dealer Item">
     <h1>dealer Cards</h1>
 
     <div class="Row Cards">
@@ -19,14 +19,14 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["playerCards", "deckId"]),
+    ...mapState(["playerCards", "deckId"])
   },
   methods: {
-    ...mapActions(["getCards"]),
+    ...mapActions(["getCards"])
   },
   async mounted() {
     await this.getCards({ user: "dealer", deckId: this.deckId, count: 1 });
   },
-  components: { Card },
+  components: { Card }
 };
 </script>

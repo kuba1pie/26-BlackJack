@@ -3,7 +3,7 @@
     <h1>Game: {{ this.$store.state.deckId }}</h1>
     <div class="Row">
       <Player />
-      <dealer />
+      <Dealer />
       <Engine />
     </div>
     <div class="Row"><Bet /></div>
@@ -12,7 +12,7 @@
 
 <script>
 import Player from "@/components/Player.vue";
-import dealer from "@/components/dealer.vue";
+import Dealer from "@/components/Dealer.vue";
 import Engine from "@/components/Engine.vue";
 import Bet from "@/components/Bet.vue";
 
@@ -21,12 +21,12 @@ export default {
   components: {
     Player,
     Bet,
-    dealer,
-    Engine,
+    Dealer,
+    Engine
   },
   data: function() {
     return {};
-  },
+  }
 };
 </script>
 <style lang="sass">

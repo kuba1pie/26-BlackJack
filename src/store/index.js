@@ -11,7 +11,7 @@ export default new Vuex.Store({
     playerSum: 0,
     dealerSum: 0,
     dealerCards: [],
-    deckStatus: "",
+    deckStatus: ""
   },
   mutations: {
     GET_DECKID(state, payload) {
@@ -61,14 +61,14 @@ export default new Vuex.Store({
         state.dealerCards.push(cards[i]);
         state.dealerSum += cards[i].points;
       }
-    },
+    }
   },
   actions: {
     async getDeck(context) {
       context.commit("STATUS_DECKID", "loading");
       return axios
         .get("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
-        .then((response) => {
+        .then(response => {
           context.commit("GET_DECKID", response.data.deck_id);
           context.commit("STATUS_DECKID", "done");
         });
@@ -82,9 +82,9 @@ export default new Vuex.Store({
             "/draw/?count=" +
             payload.count
         )
-        .then((response) => {
+        .then(response => {
           context.commit("PUSH_" + user + "_CARDS", response.data.cards, user);
         });
-    },
-  },
+    }
+  }
 });
