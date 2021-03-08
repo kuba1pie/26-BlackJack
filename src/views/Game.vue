@@ -1,17 +1,18 @@
 <template>
   <div class="Game Wrapper">
-    <h1>Home: {{ this.$store.state.deckId }}</h1>
+    <h1>Game: {{ this.$store.state.deckId }}</h1>
     <div class="Row">
       <Player />
-      <Croupier />
+      <dealer />
+      <Engine />
     </div>
-    <div class="Row"><Engine /><Bet /></div>
+    <div class="Row"><Bet /></div>
   </div>
 </template>
 
 <script>
 import Player from "@/components/Player.vue";
-import Croupier from "@/components/Croupier.vue";
+import dealer from "@/components/dealer.vue";
 import Engine from "@/components/Engine.vue";
 import Bet from "@/components/Bet.vue";
 
@@ -20,12 +21,12 @@ export default {
   components: {
     Player,
     Bet,
-    Croupier,
-    Engine
+    dealer,
+    Engine,
   },
   data: function() {
     return {};
-  }
+  },
 };
 </script>
 <style lang="sass">

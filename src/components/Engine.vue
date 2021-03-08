@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import { drawCard, check } from "@/components/helpers.js";
 import store from "../store/index.js";
+import { mapState, mapActions } from "vuex";
 export default {
   name: "Engine",
   data: function() {
@@ -17,23 +17,21 @@ export default {
       cards: store.state.playerCards,
     };
   },
+  computed: {
+    ...mapState(["playerCards", "deckId"]),
+  },
   methods: {
-    ccc() {
-      check(store.state.playerSum, store.state.croupierSum);
-    },
+    ...mapActions(["getCards"]),
     hit() {
       console.log("Hit");
-      drawCard(store.state.deckId, 1, "player");
+      this.getCards({ user: "player", deckId: this.deckId, count: 1 });
     },
     dealerDraw() {
-      console.log(store.state.croupierSum);
-      drawCard(store.state.deckId, 1, "dealer");
+      this.getCards({ user: "dealer", deckId: this.deckId, count: 1 });
     },
-    stand() {},
-  },
-  mounted() {
-    drawCard(store.state.deckId, 2, "player");
-    drawCard(store.state.deckId, 1, "croupier");
+    stand() {
+      this.getCards({ user: "dealer", deckId: this.deckId, count: 1 });
+    },
   },
 };
 </script>
