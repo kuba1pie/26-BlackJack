@@ -2,36 +2,57 @@
   <div class="Engine Item">
     <button v-on:click="hit">Hit</button>
     <button v-on:click="stand">Stand</button>
-    <button v-on:click="hit">Double Down</button>
-    <button v-on:click="ccc">Check</button>
+    <button>Check</button>
   </div>
 </template>
 
 <script>
-import store from "../store/index.js";
 import { mapState, mapActions } from "vuex";
 export default {
   name: "Engine",
   data: function() {
-    return {
-      cards: store.state.playerCards
-    };
+    return {};
   },
   computed: {
-    ...mapState(["playerCards", "deckId"])
+    ...mapState(["playerSum", "dealerSum", "deckId"])
   },
   methods: {
     ...mapActions(["getCards"]),
     hit() {
-      console.log("Hit");
-      this.getCards({ user: "player", deckId: this.deckId, count: 1 });
+      this.getCards({ user: "player", deckId: this.deckId, count: 1 })
+        .then(() => {
+          if (this.playerSum > 21) {
+            this.getCards({ user: "dealer", deckId: this.deckId, count: 1 });
+            this.stand();
+          }
+        })
+        .catch(() => {
+          // error callback function
+        });
     },
-    dealerDraw() {
-      this.getCards({ user: "dealer", deckId: this.deckId, count: 1 });
+    check() {
+      if (this.dealerSum - this.playerSum > 0) {
+        console.log("you loose");
+      } else if (this.dealerSum == this.playerSum) {
+        console.log("remis");
+      } else {
+        console.log("you win");
+      }
     },
-    stand() {
-      this.getCards({ user: "dealer", deckId: this.deckId, count: 1 });
-    }
+    wh() {
+      this.getCards({ user: "dealer", deckId: this.deckId, count: 1 }).then(
+        () => {
+          if (this.dealerSum - this.playerSum < 0) {
+            console.log("you loose");
+          } else if (this.dealerSum == this.playerSum) {
+            console.log("remis");
+          } else {
+            console.log("you win");
+          }
+        }
+      );
+    },
+    stand() {}
   }
 };
 </script>

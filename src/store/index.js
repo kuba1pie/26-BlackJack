@@ -11,7 +11,7 @@ export default new Vuex.Store({
     playerSum: 0,
     dealerSum: 0,
     dealerCards: [],
-    deckStatus: ""
+    deckStatus: "",
   },
   mutations: {
     GET_DECKID(state, payload) {
@@ -19,6 +19,12 @@ export default new Vuex.Store({
     },
     STATUS_DECKID(state, payload) {
       state.deckStatus = payload;
+    },
+    RESET(state) {
+      state.dealerCards = [];
+      state.playerCards = [];
+      state.dealerSum = 0;
+      state.playerSum = 0;
     },
     PUSH_PLAYER_CARDS(state, cards) {
       let i;
@@ -36,16 +42,6 @@ export default new Vuex.Store({
         state.playerSum += cards[i].points;
       }
     },
-    dealerCards(state, payload) {
-      state.dealerCards.push(payload.item);
-      state.dealerSum += payload.sum;
-    },
-    RESET(state) {
-      state.dealerCards = [];
-      state.playerCards = [];
-      state.dealerSum = 0;
-      state.playerSum = 0;
-    },
     PUSH_DEALER_CARDS(state, cards) {
       let i;
       for (i = 0; i < cards.length; i++) {
@@ -61,14 +57,14 @@ export default new Vuex.Store({
         state.dealerCards.push(cards[i]);
         state.dealerSum += cards[i].points;
       }
-    }
+    },
   },
   actions: {
     async getDeck(context) {
       context.commit("STATUS_DECKID", "loading");
       return axios
         .get("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
-        .then(response => {
+        .then((response) => {
           context.commit("GET_DECKID", response.data.deck_id);
           context.commit("STATUS_DECKID", "done");
         });
@@ -82,9 +78,27 @@ export default new Vuex.Store({
             "/draw/?count=" +
             payload.count
         )
-        .then(response => {
+        .then((response) => {
           context.commit("PUSH_" + user + "_CARDS", response.data.cards, user);
+        })
+        .catch(function(error) {
+          if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          } else if (error.request) {
+            // The request was made but no response was received
+            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+            // http.ClientRequest in node.js
+            console.log(error.request);
+          } else {
+            // Something happened in setting up the request that triggered an Error
+            console.log("Error", error.message);
+          }
+          console.log(error.config);
         });
-    }
-  }
+    },
+  },
 });

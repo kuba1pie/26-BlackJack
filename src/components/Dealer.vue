@@ -1,11 +1,11 @@
 <template>
   <div class="Dealer Item">
-    <h1>dealer Cards</h1>
+    <h1>Dealer Cards</h1>
 
     <div class="Row Cards">
       <Card v-for="card in dealerCards" v-bind:card="card" :key="card.code" />
     </div>
-    <div class="Row">Points: {{ this.$store.state.dealerSum }}</div>
+    <div class="Row">Points: {{ dealerSum }}</div>
   </div>
 </template>
 
@@ -14,12 +14,12 @@ import Card from "@/components/Card.vue";
 import { mapState, mapActions } from "vuex";
 
 export default {
-  name: "Player",
+  name: "Dealer",
   data: function() {
     return {};
   },
   computed: {
-    ...mapState(["playerCards", "deckId"])
+    ...mapState(["dealerCards", "dealerSum", "deckId"])
   },
   methods: {
     ...mapActions(["getCards"])

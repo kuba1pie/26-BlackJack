@@ -4,7 +4,7 @@
     <div class="Row">
       <Card v-for="card in playerCards" v-bind:card="card" :key="card.code" />
     </div>
-    <div class="Row">Points: {{ this.$store.state.playerSum }}</div>
+    <div class="Row">Points: {{ playerSum }}</div>
   </div>
 </template>
 
@@ -18,14 +18,14 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["playerCards", "deckId"])
+    ...mapState(["playerCards", "playerSum", "deckId"]),
   },
   methods: {
-    ...mapActions(["getCards"])
+    ...mapActions(["getCards"]),
   },
   async mounted() {
     await this.getCards({ user: "player", deckId: this.deckId, count: 2 });
   },
-  components: { Card }
+  components: { Card },
 };
 </script>
