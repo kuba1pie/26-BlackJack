@@ -7,6 +7,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     deckId: "",
+    wallet: 2000,
+    bet: 0,
     playerCards: [],
     playerSum: 0,
     dealerSum: 0,
@@ -25,6 +27,16 @@ export default new Vuex.Store({
       state.playerCards = [];
       state.dealerSum = 0;
       state.playerSum = 0;
+      state.wallet = 2000;
+    },
+    SET_BET(state, payload) {
+      state.bet = payload.value;
+    },
+    ADD_TO_WALLET(state, payload) {
+      state.wallet += payload.betValue;
+    },
+    SUB_FROM_WALLET(state, payload) {
+      state.wallet -= payload.betValue;
     },
     PUSH_PLAYER_CARDS(state, cards) {
       let i;
