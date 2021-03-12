@@ -2,6 +2,9 @@
   <div class="Engine Item">
     <button v-on:click="hit" id="btnHit">Hit</button>
     <button v-on:click="stand" id="btnStand">Stand</button>
+    <div class="end" v-if="end">
+      <button v-on:click="restart">ok end</button>
+    </div>
   </div>
 </template>
 
@@ -13,11 +16,11 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["playerSum", "dealerSum", "deckId", "bet"]),
+    ...mapState(["playerSum", "dealerSum", "deckId", "bet", "end"]),
   },
   methods: {
-    ...mapActions(["getCards"]),
-    ...mapMutations(["ADD_TO_WALLET", "SUB_FROM_WALLET"]),
+    ...mapActions(["getCards", "getDeck"]),
+    ...mapMutations(["ADD_TO_WALLET", "SUB_FROM_WALLET", "RESET", "END"]),
     hit() {
       this.getCards({ user: "player", deckId: this.deckId, count: 1 })
         .then(() => {
@@ -29,12 +32,21 @@ export default {
           // error callback function
         });
     },
+    restart() {
+      this.RESET();
+      this.getDeck();
+      this.getCards({ user: "player", deckId: this.deckId, count: 2 });
+      this.getCards({ user: "dealer", deckId: this.deckId, count: 1 });
+      document.getElementById("btnHit").style.display = "initial";
+      document.getElementById("btnStand").style.display = "initial";
+    },
     win() {
       this.ADD_TO_WALLET({ betValue: this.bet });
-      console.log(this.bet);
+      this.END({ boolen: true });
     },
     loose() {
       this.SUB_FROM_WALLET({ betValue: this.bet });
+      this.END({ boolen: true });
     },
     remis() {},
     check() {

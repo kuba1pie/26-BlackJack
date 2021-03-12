@@ -1,27 +1,32 @@
 <template>
-  <div class="home">
-    <router-link :to="{ path: '/game' }">Start Game</router-link>
-    <h1>Home: {{ deckId }}</h1>
+  <div class="Home">
+    <Bet />
+    <router-link :to="{ path: '/game' }" v-if="bet">Start Game</router-link>
   </div>
 </template>
 
 <script>
 import { mapState, mapMutations, mapActions } from "vuex";
+
+import Bet from "@/components/Bet.vue";
 export default {
   name: "Home",
   data: function() {
     return {};
   },
+  components: {
+    Bet,
+  },
   computed: {
-    ...mapState(["deckId"])
+    ...mapState(["deckId", "bet"]),
   },
   methods: {
     ...mapActions(["getDeck"]),
-    ...mapMutations(["RESET"])
+    ...mapMutations(["RESET"]),
   },
   async mounted() {
     this.RESET();
     await this.getDeck();
-  }
+  },
 };
 </script>

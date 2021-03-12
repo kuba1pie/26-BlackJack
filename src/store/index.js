@@ -9,6 +9,7 @@ export default new Vuex.Store({
     deckId: "",
     wallet: 2000,
     bet: 0,
+    end: false,
     playerCards: [],
     playerSum: 0,
     dealerSum: 0,
@@ -27,13 +28,20 @@ export default new Vuex.Store({
       state.playerCards = [];
       state.dealerSum = 0;
       state.playerSum = 0;
-      state.wallet = 2000;
+      state.end = false;
     },
     SET_BET(state, payload) {
-      state.bet = payload.value;
+      if (payload.value === "clear") {
+        state.bet = 0;
+      } else {
+        state.bet += payload.value;
+      }
     },
     ADD_TO_WALLET(state, payload) {
       state.wallet += payload.betValue;
+    },
+    END(state, payload) {
+      state.end = payload.boolen;
     },
     SUB_FROM_WALLET(state, payload) {
       state.wallet -= payload.betValue;
@@ -45,7 +53,7 @@ export default new Vuex.Store({
         if (value == "KING" || value == "QUEEN" || value == "JACK") {
           cards[i].points = 10;
         } else if (value == "ACE") {
-          alert("AS!");
+          //alert("AS!");
           cards[i].points = 10;
         } else {
           cards[i].points = parseInt(value);
@@ -61,7 +69,7 @@ export default new Vuex.Store({
         if (value == "KING" || value == "QUEEN" || value == "JACK") {
           cards[i].points = 10;
         } else if (value == "ACE") {
-          alert("AS!");
+          //alert("AS!");
           cards[i].points = 10;
         } else {
           cards[i].points = parseInt(value);

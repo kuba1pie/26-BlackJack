@@ -1,0 +1,109 @@
+$yellow: #ffcc00
+$dark_yellow: #c8a102
+$blue: #2873b9
+$dark_blue: #17285e
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap')
+
+html
+  body
+    margin: 0 auto
+    height: 100vh
+    background: rgb(72,149,23)
+    background: radial-gradient(#337709, #275508)
+    background-repeat: no-repeat
+    font-family: 'Open Sans', sans-serif
+    header
+      border: 2px solid $dark_blue
+      display: flex
+      flex-flow: row wrap
+      background-color: $yellow
+      margin: 0 auto
+      justify-content: center
+      align-items: center
+      button
+        margin: 0.5em
+      a:link, a:visited, a:hover, a:active
+        text-decoration: none
+        color: #fff
+        padding: 0.2em 0.4em
+        font-size: 2em
+    main
+      .Wrapper
+        margin: 0 auto
+      .Bet
+        display: flex
+        flex-flow: column
+        justify-content: space-around
+        align-content: space-around
+        min-height: 800px
+        font-size: 30px
+        div,p
+          margin: 0 auto
+          text-align: center
+        .Tokens
+          display: flex
+          flex-flow: row-wrap
+          justify-content: space-around
+          button
+            background-color: #f7f7f7
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#e7e7e7))
+            background-image: -webkit-linear-gradient(top, #f7f7f7, #e7e7e7)
+            background-image: -moz-linear-gradient(top, #f7f7f7, #e7e7e7)
+            background-image: -ms-linear-gradient(top, #f7f7f7, #e7e7e7)
+            background-image: -o-linear-gradient(top, #f7f7f7, #e7e7e7)
+            color: #a7a7a7
+            margin: 36px
+            min-width: 144px
+            height: 144px
+            position: relative
+            text-align: center
+            line-height: 144px
+            border-radius: 50%
+            font-size: 50px
+            box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff
+      .Game
+        display: grid
+        grid-template-rows: 1fr 300px 1fr
+        height: 90vh
+        .Dealer
+          gird-row: 1
+        .Screen
+          grid-row: 2
+          p
+            text-align: center
+            padding: 0
+        .Player
+          grid-row: 3
+        .Row
+          border: 1px solid red
+          display: flex
+          flex-flow: row
+          justify-content: space-around
+          padding: 1em
+          margin: 3em 1em
+        .Item
+          padding: 2em
+          margin: 1em
+          button
+            margin: 0.5em 1em
+            padding: 0.3em 0.8em
+          .Card
+            display: flex
+            flex-flow: row
+            img
+              max-width: 100px
+    footer
+      position: fixed
+      left: 0
+      bottom: 0
+      width: 100%
+      padding: 0.4em
+      text-align: center
+      font-size: 2em
+      background-color: #1670d8
+      p
+        margin: 0px
+        padding: 0px
+      a:link, a:visited, a:hover, a:active
+        text-decoration: none
+        color: #000

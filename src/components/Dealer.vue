@@ -1,6 +1,6 @@
 <template>
   <div class="Dealer Item">
-    <h1>Dealer Cards</h1>
+    <p>Dealer</p>
 
     <div class="Row Cards">
       <Card v-for="card in dealerCards" v-bind:card="card" :key="card.code" />

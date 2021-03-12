@@ -1,14 +1,24 @@
 <template>
   <div class="Bet">
-    <h2>bet</h2>
-    <button
-      v-for="number in numbers"
-      :key="number"
-      class="btnBet"
-      v-on:click="setBet(number)"
-    >
-      {{ number }}
-    </button>
+    <p>Place Your Bet:</p>
+    <div class="Tokens">
+      <button
+        v-for="number in numbers"
+        :key="number"
+        class="btnBet"
+        v-on:click="setBet(number)"
+      >
+        {{ number }}
+      </button>
+    </div>
+    <div class="BetValue">
+      <p>Your Bet Value:</p>
+      <p>{{ bet }}</p>
+    </div>
+    <div class="Wallet">
+      <p>Your Wallet Value:</p>
+      {{ wallet }}
+    </div>
   </div>
 </template>
 
@@ -18,7 +28,7 @@ export default {
   name: "Bet",
   data: function() {
     return {
-      numbers: [10, 20, 50, 100, 200],
+      numbers: ["clear", 5, 10, 25, 50, 100, 200],
     };
   },
   props: {
