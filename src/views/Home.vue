@@ -1,7 +1,9 @@
 <template>
   <div class="Home">
     <Bet />
-    <router-link :to="{ path: '/game' }" v-if="bet">Start Game</router-link>
+    <router-link :to="{ path: '/game' }" v-if="bet" class="btnStart"
+      >Start Game</router-link
+    >
   </div>
 </template>
 
