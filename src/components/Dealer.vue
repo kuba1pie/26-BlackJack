@@ -1,11 +1,10 @@
 <template>
   <div class="Dealer Item">
     <p>Dealer</p>
-
-    <div class="Row Cards">
+    <div class="Cards">
       <Card v-for="card in dealerCards" v-bind:card="card" :key="card.code" />
     </div>
-    <div class="Row">Points: {{ dealerSum }}</div>
+    <p class="Points">Points: {{ dealerSum }}</p>
   </div>
 </template>
 

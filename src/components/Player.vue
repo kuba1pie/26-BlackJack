@@ -1,11 +1,10 @@
 <template>
   <div class="Player Item">
-    <p>Player</p>
-
-    <div class="Row">Points: {{ playerSum }}</div>
-    <div class="Row">
+    <div class="Cards">
       <Card v-for="card in playerCards" v-bind:card="card" :key="card.code" />
     </div>
+    <p class="Points">Points: {{ playerSum }}</p>
+    <p>Player</p>
   </div>
 </template>
 

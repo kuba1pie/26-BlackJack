@@ -12,103 +12,107 @@ html
     background: radial-gradient(#337709, #275508)
     background-repeat: no-repeat
     font-family: 'Open Sans', sans-serif
-    display: grid
-    grid-template-rows: 100px 1fr 100px
-    header
-      border: 2px solid $dark_blue
-      display: flex
-      flex-flow: row wrap
-      background-color: $yellow
-      margin: 0 auto
-      justify-content: center
-      align-items: center
-      button
-        margin: 0.5em
-      a:link, a:visited, a:hover, a:active
-        text-decoration: none
-        color: #fff
-        padding: 0.2em 0.4em
-        font-size: 2em
-    main
-      .Home
+    .wrapper
+      display: grid
+      grid-template-rows: 10vh 80vh 10vh
+      header
         display: flex
-        flex-flow: column
+        flex-flow: row wrap
+        background-color: $yellow
+        margin: 0 auto
+        width: 100%
         justify-content: center
-        .btnStart
-          text-align: center
-          padding: 2em
-        .Bet
+        align-items: center
+        button
+          margin: 0.5em
+        a:link, a:visited, a:hover, a:active
+          text-decoration: none
+          color: #fff
+          padding: 0.2em 0.4em
+          font-size: 2em
+      main
+        display: flex
+        align-content: center
+        justify-content: center
+        .Home
           display: flex
           flex-flow: column
-          justify-content: space-around
-          align-content: space-around
-          font-size: 30px
-          div,p
-            margin: 0 auto
+          justify-content: center
+          .btnStart
             text-align: center
-          .Tokens
+            padding: 2em
+          .Bet
             display: flex
-            flex-flow: row-wrap
+            flex-flow: column
             justify-content: space-around
-            button
-              background-color: #f7f7f7
-              background-image: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#e7e7e7))
-              background-image: -webkit-linear-gradient(top, #f7f7f7, #e7e7e7)
-              background-image: -moz-linear-gradient(top, #f7f7f7, #e7e7e7)
-              background-image: -ms-linear-gradient(top, #f7f7f7, #e7e7e7)
-              background-image: -o-linear-gradient(top, #f7f7f7, #e7e7e7)
-              color: #a7a7a7
-              margin: 36px
-              min-width: 144px
-              height: 144px
-              position: relative
+            align-content: space-around
+            font-size: 30px
+            height: 100%
+            div,p
+              margin: 0 auto
               text-align: center
-              line-height: 144px
-              border-radius: 50%
-              font-size: 50px
-              box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff
-      .Game
-        display: grid
-        grid-template-rows: 40% 20% 40%
-        .Dealer
-          gird-row: 1
-        .Screen
-          grid-row: 2
-          p
-            text-align: center
-            padding: 0
-        .Player
-          grid-row: 3
-        .Row
-          border: 1px solid red
-          display: flex
-          flex-flow: row
-          justify-content: space-around
-          padding: 1em
-          margin: 3em 1em
-        .Item
-          padding: 2em
-          margin: 1em
-          button
-            margin: 0.5em 1em
-            padding: 0.3em 0.8em
-          .Card
+            .Tokens
+              justify-content: space-around
+              button
+                background-color: #f7f7f7
+                background-image: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#e7e7e7))
+                background-image: -webkit-linear-gradient(top, #f7f7f7, #e7e7e7)
+                background-image: -moz-linear-gradient(top, #f7f7f7, #e7e7e7)
+                background-image: -ms-linear-gradient(top, #f7f7f7, #e7e7e7)
+                background-image: -o-linear-gradient(top, #f7f7f7, #e7e7e7)
+                color: #a7a7a7
+                margin: 36px
+                min-width: 144px
+                height: 144px
+                position: relative
+                text-align: center
+                line-height: 144px
+                border-radius: 50%
+                font-size: 50px
+                box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff
+        .Game
+          display: grid
+          grid-template-rows: 1fr auto 1fr
+          .Dealer
+            gird-row: 1
+          .Screen
+            grid-row: 2
+            p
+              text-align: center
+              padding: 0
+          .Player
+            grid-row: 3
+          .Item
+            justify-content: center
+            align-content: center
+            button
+              margin: 0.5em 1em
+              padding: 0.3em 0.8em
+            p
+              text-align: center
+            .Cards
+              max-width: 1000px
+              display: flex
+              flex-flow: row
+              justify-content: center
+              margin: 0 auto
+              .Card
+                margin: 1em
+                img
+                  max-width: 100px
+          .Engine
             display: flex
             flex-flow: row
-            img
-              max-width: 100px
-    footer
-      position: fixed
-      left: 0
-      bottom: 0
-      width: 100%
-      padding: 0.4em
-      text-align: center
-      font-size: 2em
-      background-color: #1670d8
-      p
-        margin: 0px
-        padding: 0px
-      a:link, a:visited, a:hover, a:active
-        text-decoration: none
-        color: #000
+            padding: 1em
+      footer
+        left: 0
+        width: 100%
+        text-align: center
+        font-size: 2em
+        background-color: #1670d8
+        p
+          margin: 0px
+          padding: 0px
+        a:link, a:visited, a:hover, a:active
+          text-decoration: none
+          color: #000
