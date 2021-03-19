@@ -3,20 +3,22 @@
     <button v-on:click="hit" id="btnHit">Hit</button>
     <button v-on:click="stand" id="btnStand">Stand</button>
     <div class="end" v-if="end">
-      <button v-on:click="restart">ok end</button>
+      <button v-on:click="restart">New Game</button>
+      <button v-on:click="router.push({ path: 'home' })">Change Bet</button>
     </div>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions, mapMutations } from "vuex";
+import router from "../router";
 export default {
   name: "Engine",
   data: function() {
     return {};
   },
   computed: {
-    ...mapState(["playerSum", "dealerSum", "deckId", "bet", "end"]),
+    ...mapState(["playerSum", "dealerSum", "deckId", "bet", "end"])
   },
   methods: {
     ...mapActions(["getCards", "getDeck"]),
@@ -31,6 +33,9 @@ export default {
         .catch(() => {
           // error callback function
         });
+    },
+    change() {
+      router.push({ path: "home" });
     },
     restart() {
       this.RESET();
@@ -95,14 +100,14 @@ export default {
             this.getCards({
               user: "dealer",
               deckId: this.deckId,
-              count: 1,
+              count: 1
             }).then(() => {
               this.check();
             });
           }
         }
       );
-    },
-  },
+    }
+  }
 };
 </script>

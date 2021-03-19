@@ -28,20 +28,20 @@ export default {
   name: "Bet",
   data: function() {
     return {
-      numbers: ["clear", 5, 10, 25, 50, 100, 200],
+      numbers: ["clear", 5, 10, 25, 50, 100, 200]
     };
   },
   props: {
-    card: Object,
+    card: Object
   },
   computed: {
-    ...mapState(["wallet", "bet"]),
+    ...mapState(["wallet", "bet"])
   },
   methods: {
     ...mapMutations(["SET_BET"]),
     setBet(val) {
       this.SET_BET({ value: val });
-    },
-  },
+    }
+  }
 };
 </script>

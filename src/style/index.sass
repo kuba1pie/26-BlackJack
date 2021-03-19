@@ -7,14 +7,14 @@ $dark_blue: #17285e
 html
   body
     margin: 0 auto
-    height: 100vh
+    min-height: 100vh
     background: rgb(72,149,23)
     background: radial-gradient(#337709, #275508)
     background-repeat: no-repeat
     font-family: 'Open Sans', sans-serif
     .wrapper
       display: grid
-      grid-template-rows: 10vh 80vh 10vh
+      grid-template-rows: 5vh minmax(90vh, auto) 5vh
       header
         display: flex
         flex-flow: row wrap
@@ -70,24 +70,50 @@ html
                 border-radius: 50%
                 font-size: 50px
                 box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff
+          .Start
+            height: 150px
+            text-align: center
+            margin: 1em auto
+            font-size: 3em
         .Game
           display: grid
           grid-template-rows: 1fr auto 1fr
-          .Dealer
-            gird-row: 1
-          .Screen
+          grid-template-columns: 1fr 1fr 1fr
+          font-size: 2em
+          .left
+            grid-column: 1
             grid-row: 2
-            p
-              text-align: center
-              padding: 0
+            text-align: center
+          .right
+            grid-column: 3
+            grid-row: 2
+            text-align: center
+          div
+            border: 1px solid red
+          .Dealer
+            grid-row: 1
+            grid-column: 2
           .Player
             grid-row: 3
+            grid-column: 2
           .Item
+            display: flex
+            flex-flow: column
             justify-content: center
             align-content: center
             button
-              margin: 0.5em 1em
-              padding: 0.3em 0.8em
+              background-color: #44c767
+              border-radius: 28px
+              border: 1px solid #18ab29
+              display: inline-block
+              cursor: pointer
+              color: #ffffff
+              font-family: Arial
+              font-size: 17px
+              text-decoration: none
+              text-shadow: 0px 1px 0px #2f6627
+              &:hover
+                background-color: #5cbf2a
             p
               text-align: center
             .Cards
@@ -101,11 +127,11 @@ html
                 img
                   max-width: 100px
           .Engine
+            grid-row: 2
+            grid-column: 2
             display: flex
             flex-flow: row
-            padding: 1em
       footer
-        left: 0
         width: 100%
         text-align: center
         font-size: 2em

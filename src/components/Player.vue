@@ -18,14 +18,14 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["playerCards", "playerSum", "deckId"]),
+    ...mapState(["playerCards", "playerSum", "deckId"])
   },
   methods: {
-    ...mapActions(["getCards"]),
+    ...mapActions(["getCards"])
   },
   async mounted() {
     await this.getCards({ user: "player", deckId: this.deckId, count: 2 });
   },
-  components: { Card },
+  components: { Card }
 };
 </script>

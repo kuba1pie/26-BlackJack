@@ -1,16 +1,18 @@
 <template>
   <div class="Game">
-    <Dealer />
-    <div class="Screen">
+    <div class="left">
       <p>Wallet:</p>
       <p>{{ wallet }}</p>
+    </div>
+    <Dealer />
+    <Engine />
+    <Player />
+    <div class="right">
       <p>
         Bet:
       </p>
       <p>{{ bet }}</p>
-      <Engine />
     </div>
-    <Player />
   </div>
 </template>
 
