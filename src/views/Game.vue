@@ -27,14 +27,14 @@ export default {
   components: {
     Player,
     Dealer,
-    Engine,
+    Engine
   },
   computed: {
-    ...mapState(["wallet", "bet"]),
+    ...mapState(["wallet", "bet"])
   },
   data: function() {
     return {};
-  },
+  }
 };
 </script>
 <style lang="sass"></style>
