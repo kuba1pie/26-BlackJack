@@ -2,7 +2,11 @@
   <div class="Home">
     <Bet />
     <div class="Start">
-      <router-link :to="{ path: '/game' }" v-if="bet" class="btnStart"
+      <router-link
+        :to="{ path: '/game' }"
+        v-if="bet"
+        class="btnStart"
+        tag="button"
         >Start Game</router-link
       >
     </div>
@@ -19,18 +23,18 @@ export default {
     return {};
   },
   components: {
-    Bet
+    Bet,
   },
   computed: {
-    ...mapState(["deckId", "bet"])
+    ...mapState(["deckId", "bet"]),
   },
   methods: {
     ...mapActions(["getDeck"]),
-    ...mapMutations(["RESET"])
+    ...mapMutations(["RESET"]),
   },
   async mounted() {
     this.RESET();
     await this.getDeck();
-  }
+  },
 };
 </script>

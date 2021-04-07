@@ -3,7 +3,20 @@ $dark_yellow: #c8a102
 $blue: #2873b9
 $dark_blue: #17285e
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap')
-
+@mixin button
+  button
+    background-color: #44c767
+    border-radius: 28px
+    border: 1px solid #18ab29
+    display: inline-block
+    cursor: pointer
+    color: #ffffff
+    font-family: Arial
+    font-size: 17px
+    text-decoration: none
+    text-shadow: 0px 1px 0px #2f6627
+    &:hover
+      background-color: #5cbf2a
 html
   body
     margin: 0 auto
@@ -41,6 +54,7 @@ html
           .btnStart
             text-align: center
             padding: 2em
+          @include button
           .Bet
             display: flex
             flex-flow: column
@@ -88,8 +102,6 @@ html
             grid-column: 3
             grid-row: 2
             text-align: center
-          div
-            border: 1px solid red
           .Dealer
             grid-row: 1
             grid-column: 2
@@ -101,19 +113,12 @@ html
             flex-flow: column
             justify-content: center
             align-content: center
+            @include button
             button
-              background-color: #44c767
-              border-radius: 28px
-              border: 1px solid #18ab29
-              display: inline-block
-              cursor: pointer
-              color: #ffffff
-              font-family: Arial
-              font-size: 17px
-              text-decoration: none
-              text-shadow: 0px 1px 0px #2f6627
-              &:hover
-                background-color: #5cbf2a
+              min-width: 100px
+              max-height: 100px
+              margin: 10px
+              padding: 5px
             p
               text-align: center
             .Cards

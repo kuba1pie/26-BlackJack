@@ -3,6 +3,7 @@
     <button v-on:click="hit" id="btnHit">Hit</button>
     <button v-on:click="stand" id="btnStand">Stand</button>
     <div class="end" v-if="end">
+      <p>{{ score }}</p>
       <button v-on:click="restart">New Game</button>
       <button v-on:click="router.push({ path: 'home' })">Change Bet</button>
     </div>
@@ -15,10 +16,10 @@ import router from "../router";
 export default {
   name: "Engine",
   data: function() {
-    return {};
+    return { score: "" };
   },
   computed: {
-    ...mapState(["playerSum", "dealerSum", "deckId", "bet", "end"])
+    ...mapState(["playerSum", "dealerSum", "deckId", "bet", "end"]),
   },
   methods: {
     ...mapActions(["getCards", "getDeck"]),
@@ -48,10 +49,12 @@ export default {
     win() {
       this.ADD_TO_WALLET({ betValue: this.bet });
       this.END({ boolen: true });
+      this.score = "You Win!";
     },
     loose() {
       this.SUB_FROM_WALLET({ betValue: this.bet });
       this.END({ boolen: true });
+      this.score = "Dealer Wins!";
     },
     remis() {},
     check() {
@@ -100,14 +103,14 @@ export default {
             this.getCards({
               user: "dealer",
               deckId: this.deckId,
-              count: 1
+              count: 1,
             }).then(() => {
               this.check();
             });
           }
         }
       );
-    }
-  }
+    },
+  },
 };
 </script>
